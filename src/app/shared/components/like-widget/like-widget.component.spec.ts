@@ -4,25 +4,26 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { LikeWidgetComponent } from './like-widget.component';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-describe('LikeWidgetComponent', () => {
-  let component: LikeWidgetComponent;
+describe(LikeWidgetComponent.name, () => {
+  // let component: LikeWidgetComponent = null;
   let fixture: ComponentFixture<LikeWidgetComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LikeWidgetComponent ]
+  beforeEach(async() => {
+    await TestBed.configureTestingModule({
+      declarations: [ LikeWidgetComponent ],
+      providers: [UniqueIdService],
+      imports:[FontAwesomeModule]
     })
     .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LikeWidgetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component ', () => {
+    const instance = fixture.componentInstance;
+    expect(instance).toBeTruthy();
   });
 });
