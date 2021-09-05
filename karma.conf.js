@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-junit-reporter'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -30,6 +31,16 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      IE9: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE9'
+      },
+      IE8: {
+        base: 'IE',
+        'x-ua-compatible': 'IE=EmulateIE8'
+      }
+    }
   });
 };
